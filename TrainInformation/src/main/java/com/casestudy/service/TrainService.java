@@ -27,8 +27,15 @@ public class TrainService {
 		return trains;
 	}
 	
-	public List<TrainDetails> checkTrains(String source, String destination, String date){
-		List<TrainDetails> trains = trainRepository.findAllBySourceAndDestinationAndDate(source, destination, date);
+//	public List<TrainDetails> checkTrains(String source, String destination, String date){
+//		List<TrainDetails> trains = trainRepository.findAllBySourceAndDestinationAndDate(source, destination, date);
+//		
+//		return trains;
+//		
+//	}
+	
+	public List<TrainDetails> checkTrains(String source, String destination){
+		List<TrainDetails> trains = trainRepository.findAllBySourceAndDestination(source,destination);
 		
 		return trains;
 		

@@ -1,4 +1,4 @@
-package com.casestudy.service;
+package com.casestudy.Service;
 
 import java.util.Objects;
 

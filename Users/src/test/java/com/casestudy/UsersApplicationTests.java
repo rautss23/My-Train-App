@@ -32,13 +32,13 @@ class UsersApplicationTests {
 	
 	@Test
 	void registerUserTest() {
-		Users user = new Users("saurabh", "Saurabh S Raut", 21, "male", "nairsaurabh8@gmail.com", "password", 9876543213L, "ROLE_USER", new ArrayList<Booking>());
+		Users user = new Users("saurabh", "Saurabh S Raut", 21, "male", "saurabh8@gmail.com", "password", 9876543213L, "ROLE_USER", new ArrayList<Booking>());
 		assertEquals("User Registered Successfully", usersService.registerUser(user));
 	}
 	
 	@Test
 	void getUserTest() throws UserNotFoundException {
-		String username = "nairsaurabh8";
+		String username = "saurabh8";
 		Optional<Users> userOpt = Optional.of(new Users("saurabh8", "Saurabh S Raut", 21, "male", "saurabh8@gmail.com", "password", 9876543213L, "ROLE_USER", new ArrayList<Booking>()));
 		when(usersRepository.findById(username))
 		.thenReturn(userOpt);

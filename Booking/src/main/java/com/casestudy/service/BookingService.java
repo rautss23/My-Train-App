@@ -1,4 +1,4 @@
-package com.casestudy.service;
+package com.casestudy.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.casestudy.Repository.BookingRepository;
 import com.casestudy.model.Booking;
 import com.casestudy.model.TrainDetails;
 import com.casestudy.model.Users;
-import com.casestudy.repository.BookingRepository;
 
 @Service
 public class BookingService {

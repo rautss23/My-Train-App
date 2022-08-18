@@ -9,9 +9,13 @@ import com.casestudy.model.TrainDetails;
 
 public interface TrainRepository extends MongoRepository<TrainDetails, String>{
 
-	List<TrainDetails> findAllBySourceAndDestinationAndDate(String source, String destination, String date);
+	//List<TrainDetails> findAllBySourceAndDestinationAndDate(String source, String destination, String date);
+	
+//	List<TrainDetails> findAllBySourceAndDestinationAndDate(String source, String destination);
 
 	List<TrainDetails> findAllByName(String name);
+
+	List<TrainDetails> findAllBySourceAndDestination(String source, String destination);
 	
 	
 }

@@ -11,9 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
+import com.casestudy.Repository.BookingRepository;
+import com.casestudy.Service.BookingService;
 import com.casestudy.model.Booking;
-import com.casestudy.repository.BookingRepository;
-import com.casestudy.service.BookingService;
+import com.casestudy.model.TrainDetails;
 
 @SpringBootTest
 class BookingApplicationTests {
@@ -26,7 +27,7 @@ class BookingApplicationTests {
 	@Test
 	public void getAllTicketsTest() {
 		when(bookingRepository.findAll()).thenReturn(Stream
-				.of(new Booking(234, "express", "saurabh", "12345", "2021-04-30", 5, "Delhi", "Kolkata", "General", 5000), new Booking(235, "express", "ankit", "12345", "2021-04-30", 2, "Delhi", "Kolkata", "General", 5000)).collect(Collectors.toList()));
+				.of(new Booking(234, "express", "akhil", "12345", "2021-04-30", 5, "Delhi", "Kolkata", "General", 5000), new Booking(235, "express", "ankit", "12345", "2021-04-30", 2, "Delhi", "Kolkata", "General", 5000)).collect(Collectors.toList()));
 		assertEquals(2, bookingService.getAllTickets().size());
 	}
 	

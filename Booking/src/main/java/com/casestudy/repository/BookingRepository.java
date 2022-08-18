@@ -1,4 +1,4 @@
-package com.casestudy.repository;
+package com.casestudy.Repository;
 
 import java.util.Optional;
 

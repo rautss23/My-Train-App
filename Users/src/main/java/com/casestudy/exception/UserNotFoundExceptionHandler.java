@@ -11,6 +11,6 @@ public class UserNotFoundExceptionHandler {
 	@ExceptionHandler(UserNotFoundException.class)
 	public ResponseEntity<CustomError> handleUserNotFoundException(UserNotFoundException e){
 		CustomError customError = new CustomError(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR );
-		return new ResponseEntity<CustomError>(customError, HttpStatus.INTERNAL_SERVER_ERROR);
+		return new ResponseEntity<>(customError, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 }
