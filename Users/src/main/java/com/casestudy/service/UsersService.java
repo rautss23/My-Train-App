@@ -41,8 +41,7 @@ public class UsersService {
 		  username = principal.toString();
 		}
 		Optional<Users> user = usersRepository.findById(username);
-		Users userP = user.get();
-		return userP;
+		return user.get();
 	}
 	
 
@@ -52,8 +51,7 @@ public class UsersService {
 		}
 		else {
 			Optional<Users> userOpt = usersRepository.findById(username);			
-			Users user = userOpt.get();
-			return user;
+			return userOpt.get();
 		}		
 	}
 
@@ -67,8 +65,7 @@ public class UsersService {
 		}
 		Optional<Users> userOpt = usersRepository.findById(username);
 		Users user = userOpt.get();
-		List<Booking> tickets = user.getBookings();
-		return tickets;
+		return user.getBookings();
 	}
 
 	public void updateUser(Users user) {

@@ -11,10 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
-import com.casestudy.Repository.BookingRepository;
-import com.casestudy.Service.BookingService;
 import com.casestudy.model.Booking;
 import com.casestudy.model.TrainDetails;
+import com.casestudy.repository.BookingRepository;
+import com.casestudy.service.BookingService;
 
 @SpringBootTest
 class BookingApplicationTests {

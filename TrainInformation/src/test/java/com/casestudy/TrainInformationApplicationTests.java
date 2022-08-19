@@ -26,39 +26,38 @@ class TrainInformationApplicationTests {
 	@Test
 	void getAllTrainsTest() {
 		when(trainRepository.findAll()).thenReturn(Stream
-				.of(new TrainDetails("123", "Rajdhani", "source1", "destination1", 1600, 1800, 2, "dateTest", 45, 1000, 500), new TrainDetails("143", "Duronto", "source1", "destination1", 1600, 1800, 2, "dateTest", 45, 1000, 500)).collect(Collectors.toList()));
+				.of(new TrainDetails("123", "Rajdhani", "source1", "destination1", 1600, 1800, 2, 45, 1000, 500), new TrainDetails("143", "Duronto", "source1", "destination1", 1600, 1800, 2, 45, 1000, 500)).collect(Collectors.toList()));
 		assertEquals(2, trainService.getAllTrains().size());
 	}
 	
 	@Test
 	void addTrainsTest() {
-		TrainDetails train = new TrainDetails("123", "Rajdhani", "source1", "destination1", 1600, 1800, 2, "dateTest", 45, 1000, 500);
+		TrainDetails train = new TrainDetails("123", "Rajdhani", "source1", "destination1", 1600, 1800, 2, 45, 1000, 500);
 		when(trainRepository.save(train)).thenReturn(train);
 		assertEquals(train, trainService.addTrains(train));
 	}
 	
-//	@Test
-//	void checkTrainsTest() {
-//		String source = "Delhi";
-//		String destination = "Kolkata";
-//		String date = "2022-08-29";
-//		when(trainRepository.findAll(source, destination))
-//		.thenReturn(Stream.of(new TrainDetails("123", "Rajdhani", "Delhi", "Kolkata", 1600, 1800, 2, 45, 1000, 500)).collect(Collectors.toList()));
-//		assertEquals(1, trainService.checkTrains(source, destination, date).size());
-//	}
+	@Test
+	void checkTrainsTest() {
+		String source = "Delhi";
+		String destination = "Kolkata";
+		when(trainRepository.findAllBySourceAndDestination(source, destination))
+		.thenReturn(Stream.of(new TrainDetails("123", "Rajdhani", "Delhi", "Kolkata", 1600, 1800, 2, 45, 1000, 500)).collect(Collectors.toList()));
+		assertEquals(1, trainService.checkTrains(source, destination).size());
+	}
 	
 	@Test
 	void getTrainByNameTest() {
 		String name="Rajdhani";
 		when(trainRepository.findAllByName(name))
-		.thenReturn(Stream.of(new TrainDetails("123", "Rajdhani", "Delhi", "Kolkata", 1600, 1800, 2, "2022-08-29", 45, 1000, 500)).collect(Collectors.toList()));
+		.thenReturn(Stream.of(new TrainDetails("123", "Rajdhani", "Delhi", "Kolkata", 1600, 1800, 2, 45, 1000, 500)).collect(Collectors.toList()));
 		assertEquals(1, trainService.getTrainByName(name).size());
 	}
 	
 	@Test
 	void getTrainByIdTest() {
 		String trainId = "1234";
-		Optional<TrainDetails> trainOpt = Optional.of(new TrainDetails("1234", "Rajdhani", "Delhi", "Kolkata", 1600, 1800, 2, "2022-08-29", 45, 1000, 500));
+		Optional<TrainDetails> trainOpt = Optional.of(new TrainDetails("1234", "Rajdhani", "Delhi", "Kolkata", 1600, 1800, 2, 45, 1000, 500));
 		when(trainRepository.findById(trainId))
 		.thenReturn(trainOpt);
 		TrainDetails train = trainOpt.get();

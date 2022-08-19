@@ -43,11 +43,7 @@ public class TrainController {
 		return "Train Added Successfully ! ";
 	}
 	
-//	@GetMapping("/checkTrains/{source}/{destination}/{date}")
-//	public List<TrainDetails> checkTrains(@PathVariable("source") String source, @PathVariable("destination") String destination, @PathVariable("date") String date){
-//		return trainService.checkTrains(source, destination, date);
-//		
-//	}
+
 	
 	@GetMapping("/checkTrains/{source}/{destination}")
 	public List<TrainDetails> checkTrains(@PathVariable("source") String source, @PathVariable("destination") String destination){

@@ -1,6 +1,4 @@
-package com.casestudy.Repository;
-
-import java.util.Optional;
+package com.casestudy.repository;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 

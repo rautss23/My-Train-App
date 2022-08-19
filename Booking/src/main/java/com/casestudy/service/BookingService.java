@@ -1,4 +1,4 @@
-package com.casestudy.Service;
+package com.casestudy.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.casestudy.Repository.BookingRepository;
 import com.casestudy.model.Booking;
 import com.casestudy.model.TrainDetails;
 import com.casestudy.model.Users;
+import com.casestudy.repository.BookingRepository;
 
 @Service
 public class BookingService {
@@ -60,7 +60,7 @@ public class BookingService {
 		Booking book = bookingRepository.findByPnr(pnr);
 		
 		Users user = restTemplate.getForObject("http://Users/getUser/" + book.getUsername(), Users.class);
-		List<Booking> ticket = new ArrayList<Booking>(user.getBookings());
+		List<Booking> ticket = new ArrayList<>(user.getBookings());
 		for( int count = 0; count < ticket.size(); count++) {
 			if(ticket.get(count).getPnr()==book.getPnr()) {
 				ticket.remove(count);

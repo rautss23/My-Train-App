@@ -27,29 +27,20 @@ public class TrainService {
 		return trains;
 	}
 	
-//	public List<TrainDetails> checkTrains(String source, String destination, String date){
-//		List<TrainDetails> trains = trainRepository.findAllBySourceAndDestinationAndDate(source, destination, date);
-//		
-//		return trains;
-//		
-//	}
+
 	
 	public List<TrainDetails> checkTrains(String source, String destination){
-		List<TrainDetails> trains = trainRepository.findAllBySourceAndDestination(source,destination);
-		
-		return trains;
+		return trainRepository.findAllBySourceAndDestination(source,destination);
 		
 	}
 
 	public List<TrainDetails> getTrainByName(String search) {
-		List<TrainDetails> searchTrain = trainRepository.findAllByName(search);
-		return searchTrain;
+		return trainRepository.findAllByName(search);
 	}
 	
 	public TrainDetails getTrainById(String search) {
 		Optional<TrainDetails> optTrain = trainRepository.findById(search);
-		TrainDetails searchTrain = optTrain.get();
-		return searchTrain;
+		return optTrain.get();
 	}
 
 	public void updateTrain(TrainDetails trainDetails) {
