@@ -2,6 +2,8 @@ package com.casestudy.controller;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -33,19 +35,28 @@ public class UsersController {
 	
 	@Autowired
 	private UsersService usersService;
+	
 	@Autowired
 	private AuthenticationManager authenticationManager;
+	
 	@Autowired
 	private MyUserDetailsService userDetailsService;
+	
 	@Autowired
 	private JwtUtil jwtTokenUtil;
+	
 	@Autowired
 	private BCryptPasswordEncoder bCrpytPassword;
 	
+	private Logger logger = LoggerFactory.getLogger(UsersController.class);
+	
 	@PostMapping("/register")
 	public String registerUser(@RequestBody Users user) {
+		logger.info("Inside register user of users controller");
 		String encodedPassword = bCrpytPassword.encode(user.getPassword());
+		logger.info("setting  password");
 		user.setPassword(encodedPassword);
+		logger.info("Added User");
 		return usersService.registerUser(user);		
 	}
 	
@@ -63,33 +74,39 @@ public class UsersController {
 
 		final String jwt = jwtTokenUtil.generateToken(userDetails);
 		String role = userDetails.getAuthorities().toString();
-
+		
+		logger.info("Authenticated !!!!");
 		return ResponseEntity.ok(new AuthenticationResponse(jwt, role));
 		
 	}
 	@GetMapping("/showProfile")
 	public Users showProfile() {
+		logger.info("Showing Profiles!!!");
 		return usersService.showProfile();
 	}
 	
 	@GetMapping("/getUser/{username}")
 	public Users getUser(@PathVariable String username) throws UserNotFoundException {
+		logger.info("Getting user by username");
 		return usersService.getUser(username);
 	}
 	
 	@GetMapping("/myBookings")
 	public List<Booking> showMyBookings(){
+		logger.info("Displaying all bookings");
 		return usersService.showMyBookings();
 		
 	}
 	
 	@PutMapping("/updateUser")
 	public void updateUser(@RequestBody Users user) {
+		logger.info("Updating User");
 		usersService.updateUser(user);
 	}
 	
 	@DeleteMapping("/removeUser/{username}")
 	public String removeUser(@PathVariable String username) throws UserNotFoundException {
+		logger.info("Removing  User");
 		return usersService.removeUser(username);
 	}
 }

@@ -3,11 +3,14 @@ package com.casestudy.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import com.casestudy.controller.UsersController;
 import com.casestudy.exception.UserNotFoundException;
 import com.casestudy.model.Booking;
 import com.casestudy.model.Users;
@@ -19,6 +22,7 @@ public class UsersService {
 	@Autowired
 	private UsersRepository usersRepository;
 	
+	private Logger logger = LoggerFactory.getLogger(UsersController.class);
 	
 	public String registerUser(Users user) {		
 //	Validation to check if the user is already registered!
@@ -28,6 +32,7 @@ public class UsersService {
 		else {
 			usersRepository.save(user);
 		}
+		logger.info("Added User");
 		return "User Registered Successfully";			
 	}
 	
@@ -41,6 +46,7 @@ public class UsersService {
 		  username = principal.toString();
 		}
 		Optional<Users> user = usersRepository.findById(username);
+		logger.info("Displaying User profile");
 		return user.get();
 	}
 	
@@ -50,13 +56,15 @@ public class UsersService {
 			throw new UserNotFoundException("OOPS! User does not exist!");
 		}
 		else {
-			Optional<Users> userOpt = usersRepository.findById(username);			
+			Optional<Users> userOpt = usersRepository.findById(username);	
+			logger.info("Getting User by username");
 			return userOpt.get();
 		}		
 	}
 
 	public List<Booking> showMyBookings() {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		logger.info("Inside Show my bookings of User");
 		String username;
 		if (principal instanceof UserDetails) {
 		  username = ((UserDetails)principal).getUsername();
@@ -65,22 +73,26 @@ public class UsersService {
 		}
 		Optional<Users> userOpt = usersRepository.findById(username);
 		Users user = userOpt.get();
+		logger.info("My Bookings");
 		return user.getBookings();
 	}
 
 	public void updateUser(Users user) {
+		logger.info("Updated User");
 		usersRepository.save(user);		
 	}
 
 	//ADMIN FUNCTIONALITY
 	public String removeUser(String username) throws UserNotFoundException {
 		//Validation to check if the user exists
+		logger.info("Inside remove user of user service");
 		if(usersRepository.existsById(username)) {
 			usersRepository.deleteById(username);
 		}
 		else {
 			throw new UserNotFoundException("No such user exists !");
 		}
+		logger.info("User Removed !");
 		return "User has been removed!";
 	}
 }
