@@ -28,22 +28,27 @@ public class TrainController {
 	
 	@GetMapping("/trainDetails")
 	public List<TrainDetails> getAllTrains(){
+		logger.info("Fetching All Trains");
 		return trainService.getAllTrains();
 	}
 	
 	@GetMapping("/trainSearchByName/{search}")
 	public List<TrainDetails> getTrainByName(@PathVariable String search){
+		logger.info("Fetching Train by Name");
 		return trainService.getTrainByName(search);
 	}
 	
 	@GetMapping("/trainSearchById/{search}")
 	public TrainDetails getTrainById(@PathVariable String search) {
+		logger.info("Fetching Train By Id");
 		return trainService.getTrainById(search);
 	}
 	
 	@PostMapping("/addTrains")
 	public String addTrains(@RequestBody TrainDetails trainDetails) {
+		logger.info("Adding Train");
 		trainService.addTrains(trainDetails);
+		logger.info("Train Added!!");
 		return "Train Added Successfully ! ";
 	}
 	
@@ -51,17 +56,20 @@ public class TrainController {
 	
 	@GetMapping("/checkTrains/{source}/{destination}")
 	public List<TrainDetails> checkTrains(@PathVariable("source") String source, @PathVariable("destination") String destination){
+		logger.info("Fetching Train by source to destintion");
 		return trainService.checkTrains(source, destination);
 		
 	}
 	
 	@PutMapping("/updateTrain")
 	public void updateTrain(@RequestBody TrainDetails trainDetails) {
+		logger.info("Train updated");
 		trainService.updateTrain(trainDetails);
 	}
 	
 	@DeleteMapping("/removeTrain/{trainId}")
 	public String removeTrain(@PathVariable String trainId) {
+		logger.info("Train Deleted!!!");
 		return trainService.removeTrain(trainId);
 	}
 

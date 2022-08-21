@@ -19,7 +19,7 @@ public class TrainService {
 	@Autowired
 	private TrainRepository trainRepository;
 	
-	private Logger logger = LoggerFactory.getLogger(TrainController.class);
+	private Logger logger = LoggerFactory.getLogger(TrainService.class);
 
 	
 	public List<TrainDetails> getAllTrains(){
@@ -65,8 +65,9 @@ public class TrainService {
 	}
 
 	public String removeTrain(String trainId) {
-		logger.info("Train Removed!!");
+		
 		trainRepository.deleteById(trainId);
+		logger.info("Train Removed!!");
 		return "Train Deleted Successfully";
 	}
 	

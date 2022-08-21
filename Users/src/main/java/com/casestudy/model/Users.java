@@ -22,6 +22,7 @@ public class Users {
 	private String username;
 	@NotEmpty(message = "name cannot be empty")
 	private String name;
+	@NotNull(message = "age cannot be empty")
 	private int age;
 	@NotEmpty(message = "gender cannot be empty")
 	private String gender;
