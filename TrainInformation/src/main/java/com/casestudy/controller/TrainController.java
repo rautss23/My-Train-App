@@ -18,7 +18,7 @@ import com.casestudy.model.TrainDetails;
 import com.casestudy.service.TrainService;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*")
 public class TrainController {
 
 	@Autowired

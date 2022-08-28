@@ -27,7 +27,7 @@ public class BookingService {
 	@Autowired
 	private RestTemplate restTemplate;
 	
-	private Logger logger = LoggerFactory.getLogger(BookingController.class);
+	private Logger logger = LoggerFactory.getLogger(BookingService.class);
 	
 	public List<Booking> getAllTickets() {
 		return bookingRepository.findAll();

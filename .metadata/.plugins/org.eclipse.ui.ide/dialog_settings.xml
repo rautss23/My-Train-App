@@ -55,6 +55,8 @@
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
 			<item value="C:\Users\saraut\Desktop\Case Study\My Train App\Backend"/>
+			<item value="C:\Users\saraut\Desktop\Case Study\My Train App\Backend\Api-Gateway"/>
+			<item value="C:\Users\saraut\Downloads\API-Gateway"/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
 			<item value=""/>

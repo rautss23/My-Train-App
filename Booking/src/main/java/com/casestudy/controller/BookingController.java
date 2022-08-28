@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.casestudy.model.Booking;
 import com.casestudy.service.BookingService;
 
-@CrossOrigin
+@CrossOrigin(origins ="*")
 @RestController
 public class BookingController {
 	

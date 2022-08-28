@@ -29,7 +29,7 @@ import com.casestudy.security.JwtUtil;
 import com.casestudy.security.MyUserDetailsService;
 import com.casestudy.service.UsersService;
 
-@CrossOrigin
+@CrossOrigin(origins ="*")
 @RestController
 public class UsersController {
 	

@@ -10,7 +10,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import com.casestudy.controller.UsersController;
 import com.casestudy.exception.UserNotFoundException;
 import com.casestudy.model.Booking;
 import com.casestudy.model.Users;
@@ -22,7 +21,7 @@ public class UsersService {
 	@Autowired
 	private UsersRepository usersRepository;
 	
-	private Logger logger = LoggerFactory.getLogger(UsersController.class);
+	private Logger logger = LoggerFactory.getLogger(UsersService.class);
 	
 	public String registerUser(Users user) {		
 //	Validation to check if the user is already registered!
